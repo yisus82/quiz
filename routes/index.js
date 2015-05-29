@@ -11,4 +11,8 @@ router.get('/', function(req, res, next) {
 router.get('/quizzes/question', quizController.question);
 router.get('/quizzes/answer', quizController.answer);
 
+router.get('/author', function(req, res, next) {
+  res.render('author', { name: 'Jesús Ángel Pérez-Roca Fernández', photo: '../images/author.png' });
+});
+
 module.exports = router;
