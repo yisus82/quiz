@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quiz' });
 });
 
-router.get('/quizzes/question', quizController.question);
-router.get('/quizzes/answer', quizController.answer);
+router.get('/quizzes',                      quizController.index);
+router.get('/quizzes/:quizId(\\d+)',        quizController.show);
+router.get('/quizzes/:quizId(\\d+)/answer', quizController.answer);
 
 router.get('/author', function(req, res, next) {
   res.render('author', { name: 'Jesús Ángel Pérez-Roca Fernández', photo: '../images/author.png' });
