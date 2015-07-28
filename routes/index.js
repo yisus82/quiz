@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var quizController = require('../controllers/quiz_controller');
+var commentController = require('../controllers/comment_controller');
 
 // Página principal
 router.get('/', function(req, res, next) {
@@ -20,6 +21,10 @@ router.post('/quizzes/create',              quizController.create);
 router.get('/quizzes/:quizId(\\d+)/edit',   quizController.edit);
 router.put('/quizzes/:quizId(\\d+)',        quizController.update);
 router.delete('/quizzes/:quizId(\\d+)',     quizController.destroy);
+
+// Comentarios
+router.get('/quizzes/:quizId(\\d+)/comments/new',           commentController.new);
+router.post('/quizzes/:quizId(\\d+)/comments',              commentController.create);
 
 // Página de autor
 router.get('/author', function(req, res, next) {
