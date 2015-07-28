@@ -17,11 +17,11 @@ router.param('quizId', quizController.load);  // autoload :quizId
 router.get('/quizzes',                      quizController.index);
 router.get('/quizzes/:quizId(\\d+)',        quizController.show);
 router.get('/quizzes/:quizId(\\d+)/answer', quizController.answer);
-router.get('/quizzes/new',                  quizController.new);
-router.post('/quizzes/create',              quizController.create);
-router.get('/quizzes/:quizId(\\d+)/edit',   quizController.edit);
-router.put('/quizzes/:quizId(\\d+)',        quizController.update);
-router.delete('/quizzes/:quizId(\\d+)',     quizController.destroy);
+router.get('/quizzes/new', 				    sessionController.loginRequired, quizController.new);
+router.post('/quizzes/create',              sessionController.loginRequired, quizController.create);
+router.get('/quizzes/:quizId(\\d+)/edit',   sessionController.loginRequired, quizController.edit);
+router.put('/quizzes/:quizId(\\d+)',        sessionController.loginRequired, quizController.update);
+router.delete('/quizzes/:quizId(\\d+)',     sessionController.loginRequired, quizController.destroy);
 
 // Definición de rutas de sesion
 router.get('/login',  sessionController.new);     // formulario login
